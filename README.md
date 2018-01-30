@@ -1,3 +1,5 @@
+See the post about this library and its methods: https://qiita.com/kimagure/items/fd05ad13ee8def0fb4ed
+
 wip
 
 What this looks like so far:
