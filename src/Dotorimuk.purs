@@ -23,11 +23,14 @@ newtype ChartBuilder
 foreign import makeBarChart_ :: forall barChartSpec e
    . Context2D -> barChartSpec -> Eff e ChartInstance
 
-makeBarChart :: forall appliesTo output trash e
-   . RowCons "barDataDataset" Unit trash appliesTo
-  => Context2D
+makeBarChart :: forall appliesTo output e
+   . Context2D
   -> { labels :: Array String
-     , datasetBuilder :: ChartBuilder appliesTo ("type" :: String) output
+     , datasetBuilder ::
+         ChartBuilder
+          (barDataDataset :: Unit | appliesTo)
+          ("type" :: String)
+          output
      }
   -> Eff e ChartInstance
 makeBarChart ctx {labels, datasetBuilder: ChartBuilder builder} =
